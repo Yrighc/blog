@@ -1,10 +1,10 @@
-baseURL: https://example.org/
+baseURL: https://yrighc.github.io/blog/
 languageCode: zh-cn
-title: "我的 Obsidian 知识库"
+title: "我的知识库"
 theme: PaperMod
 
 # 显式设置首页及列表页每页展示的笔记卡片数量
-paginate: 10
+paginate: 10ß
 
 # 配置输出格式以支持 PaperMod 的搜索功能
 outputs:
@@ -34,7 +34,7 @@ menu:
 
 params:
   env: production
-  title: "我的 Obsidian 知识库"
+  title: "我的知识库"
   description: "从 Obsidian 自动同步构建的个人知识库"
   author: "Me"
   
