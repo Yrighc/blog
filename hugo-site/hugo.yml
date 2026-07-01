@@ -1,4 +1,5 @@
-baseURL: https://yrighc.github.io/blog/
+# 💡 已经更新为你绑定的真实自定义域名，且彻底去除了多余的 blog/ 子路径
+baseURL: http://blog.801200.xyz/
 languageCode: zh-cn
 title: "我的知识库"
 theme: PaperMod

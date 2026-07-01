@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Index on 我的知识库</title><link>https://yrighc.github.io/blog/</link><description>Recent content in Index on 我的知识库</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 01 Jul 2026 15:38:20 +0800</lastBuildDate><atom:link href="https://yrighc.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>🙋 关于我 &amp; 知识库</title><link>https://yrighc.github.io/blog/about/</link><pubDate>Wed, 01 Jul 2026 15:38:20 +0800</pubDate><guid>https://yrighc.github.io/blog/about/</guid><description>&lt;p&gt;你好！欢迎来到我的个人公开知识库。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Index on 我的知识库</title><link>http://blog.801200.xyz/</link><description>Recent content in Index on 我的知识库</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 01 Jul 2026 15:38:20 +0800</lastBuildDate><atom:link href="http://blog.801200.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>🙋 关于我 &amp; 知识库</title><link>http://blog.801200.xyz/about/</link><pubDate>Wed, 01 Jul 2026 15:38:20 +0800</pubDate><guid>http://blog.801200.xyz/about/</guid><description>&lt;p&gt;你好！欢迎来到我的个人公开知识库。&lt;/p&gt;
 &lt;h2 id="-知识库的主题划分"&gt;🎯 知识库的主题划分&lt;/h2&gt;
 &lt;p&gt;我目前主要记录和分享以下领域的内容：&lt;/p&gt;
 &lt;table&gt;
@@ -34,8 +34,8 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;返回主页：&lt;a href="https://yrighc.github.io/blog/"&gt;首页&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>2FA 与动态口令安全架构指南</title><link>https://yrighc.github.io/blog/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://yrighc.github.io/blog/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</guid><description>&lt;blockquote&gt;
+&lt;li&gt;返回主页：&lt;a href="http://blog.801200.xyz/"&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>2FA 与动态口令安全架构指南</title><link>http://blog.801200.xyz/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>http://blog.801200.xyz/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;摘要：关于 2FA (基于时间戳的单次密码 TOTP) 的底层运行机制、工程架构痛点以及密钥存储策略的核心笔记。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="-一-核心概念与防御机制"&gt;🛡️ 一、 核心概念与防御机制&lt;/h2&gt;
