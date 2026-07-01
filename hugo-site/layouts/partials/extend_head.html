@@ -1,8 +1,8 @@
 {{- if or .Params.math .Site.Params.math -}}
-<!-- 100% 离线本地化托管的 KaTeX 数学公式渲染引擎 -->
-<link rel="stylesheet" href="/katex/katex.min.css">
-<script defer src="/katex/katex.min.js"></script>
-<script defer src="/katex/contrib/auto-render.min.js"></script>
+<!-- 使用 relURL 动态计算子路径下的本地 KaTeX 地址 -->
+<link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}">
+<script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
+<script defer src="{{ "katex/contrib/auto-render.min.js" | relURL }}"></script>
 
 <!-- 安全地在本地 DOMContentLoaded 后执行数学公式渲染 -->
 <script>

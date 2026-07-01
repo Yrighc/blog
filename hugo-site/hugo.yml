@@ -4,7 +4,7 @@ title: "我的知识库"
 theme: PaperMod
 
 # 显式设置首页及列表页每页展示的笔记卡片数量
-paginate: 10ß
+paginate: 10
 
 # 配置输出格式以支持 PaperMod 的搜索功能
 outputs:
@@ -13,28 +13,28 @@ outputs:
     - RSS
     - JSON # 搜索功能需要 JSON 输出
 
-# 顶层菜单配置
+# 顶层菜单配置 (去除了开头的斜杠，防止子路径丢失)
 menu:
   main:
     - name: "🔍 搜索"
-      url: "/search/"
+      url: "search/"
       weight: 10
     - name: "📅 归档"
-      url: "/archives/"
+      url: "archives/"
       weight: 20
     - name: "🗂 分类"
-      url: "/categories/"
+      url: "categories/"
       weight: 30
     - name: "🏷 标签"
-      url: "/tags/"
+      url: "tags/"
       weight: 40
     - name: "🙋 关于"
-      url: "/about/"
+      url: "about/"
       weight: 50
 
 params:
   env: production
-  title: "我的知识库"
+  title: "我的 Obsidian 知识库"
   description: "从 Obsidian 自动同步构建的个人知识库"
   author: "Me"
   
