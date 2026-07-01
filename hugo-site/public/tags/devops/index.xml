@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Devops on 我的 Obsidian 知识库</title>
+    <link>http://localhost:1313/tags/devops/</link>
+    <description>Recent content in Devops on 我的 Obsidian 知识库</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2FA 与动态口令安全架构指南</title>
+      <link>http://localhost:1313/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/%E6%8A%80%E6%9C%AF/2fa-%E5%8F%8C%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;摘要：关于 2FA (基于时间戳的单次密码 TOTP) 的底层运行机制、工程架构痛点以及密钥存储策略的核心笔记。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;-一-核心概念与防御机制&#34;&gt;🛡️ 一、 核心概念与防御机制&lt;/h2&gt;
+&lt;h3 id=&#34;q-2fa-的底层原理是什么它的安全性来源于哪里&#34;&gt;Q: 2FA 的底层原理是什么？它的安全性来源于哪里？&lt;/h3&gt;
+&lt;p&gt;2FA 的本质是结合了“你所知道的（密码）”与“你所拥有的（物理设备）”。目前主流方案是 &lt;span class=&#34;dead-link&#34; style=&#34;color: var(--text-muted); border-bottom: 1px dashed var(--text-muted);&#34;&gt;TOTP&lt;/span&gt; (Time-Based One-Time Password)。
+服务端与客户端共享一个 Base32 编码的 &lt;code&gt;Secret Key&lt;/code&gt;。验证过程纯粹是离线的数学计算：
+&lt;/p&gt;
+$$TOTP = Truncate(HMAC\_SHA1(K, T))$$&lt;ul&gt;
+&lt;li&gt;安全性核心在于&lt;strong&gt;防重放攻击&lt;/strong&gt;与&lt;strong&gt;凭证解耦&lt;/strong&gt;。它极大增加了自动化批量撞库 (Credential Stuffing) 的成本，并将钓鱼网站的攻击窗口期压缩到了极短的时间（如 30 秒）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;q-如果核心的-secret-key-泄露岂不是直接崩盘工程上如何防范&#34;&gt;Q: 如果核心的 &lt;code&gt;Secret Key&lt;/code&gt; 泄露，岂不是直接崩盘？工程上如何防范?&lt;/h3&gt;
+&lt;p&gt;是的，&lt;code&gt;Secret Key&lt;/code&gt; 一旦泄露，黑客可以直接生成动态码。工程上通常采用多层防御：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;传输层防范&lt;/strong&gt;：前端绑定的 QR Code 阅后即焚，服务端绝不二次提供明文 Key。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬件级隔离&lt;/strong&gt;：Authenticator App 将密钥存入移动设备的 TEE（如 Secure Enclave），防止物理提取。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;容灾策略&lt;/strong&gt;：提供强哈希加密的 Recovery Codes，用于设备丢失时的紧急重置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-二-2fa-解决的核心安全问题与业务场景&#34;&gt;🎯 二、 2FA 解决的核心安全问题与业务场景&lt;/h2&gt;
+&lt;h3 id=&#34;q-市面上的大厂如-githubsteam强制推行-2fa核心是为了解决哪些安全痛点&#34;&gt;Q: 市面上的大厂（如 GitHub、Steam）强制推行 2FA，核心是为了解决哪些安全痛点？&lt;/h3&gt;
+&lt;p&gt;静态密码体系在现代黑灰产面前已经失效，设定 2FA 重点解决了以下三个致命威胁：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;终结凭证复用与撞库 (Credential Stuffing)&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;痛点：用户习惯在多站使用同一密码。边缘小站被脱库后，黑客会拿着密码去大站批量尝试。&lt;/li&gt;
+&lt;li&gt;解决：引入了“物理设备”维度。没有每 30 秒变动一次的 TOTP，自动化脚本的批量撞库成本趋近于无限大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免疫静态网络钓鱼与中间人嗅探 (Phishing &amp;amp; Sniffing)&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;痛点：传统钓鱼网站只要骗到密码，即可在未来任意时刻重放 (Replay) 登录。&lt;/li&gt;
+&lt;li&gt;解决：TOTP 自带极短的时间沙盒（通常 30 秒）。即使黑客骗到了当前验证码，只要未在几十秒内迅速消耗，该凭证即彻底失效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缩小内部脱敏数据泄露的爆炸半径&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;痛点：数据库被内部员工 Dump 或黑客窃取，即使密码被强哈希，仍可能被算力破解。&lt;/li&gt;
+&lt;li&gt;解决：2FA 的 &lt;code&gt;Secret Key&lt;/code&gt; 通常与主密码表隔离存储（甚至存放在独立的 HSM 硬件中）。只要校验服务未沦陷，用户的账户依然安全。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;q-在实际的后端工程设计中2fa-通常被应用在哪些典型场景中&#34;&gt;Q: 在实际的后端工程设计中，2FA 通常被应用在哪些典型场景中？&lt;/h3&gt;
+&lt;p&gt;除了常规的账号登录，2FA 在纵深防御体系中常用于构建动态物理屏障：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

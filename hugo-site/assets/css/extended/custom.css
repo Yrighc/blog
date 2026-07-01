@@ -1,0 +1,49 @@
+/* 
+   Hugo PaperMod Custom CSS
+   重置所有卡片为大字、无框、极简平铺列表样式
+*/
+
+/* 1. 移除卡片外框、背景色和阴影 */
+.post-entry {
+  background: transparent !important;       /* 移除背景色 */
+  border: none !important;                  /* 移除卡片边框 */
+  box-shadow: none !important;              /* 移除阴影 */
+  border-radius: 0 !important;              /* 移除圆角 */
+  padding: 24px 0 !important;               /* 调整卡片间距，上下留白 */
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid var(--background-modifier-border) !important; /* 仅保留一条极其淡雅的分割线 */
+}
+
+/* 2. 悬停效果微调：优雅淡出，取消盒子的位移跳动 */
+.post-entry:hover {
+  transform: none !important;               /* 取消向上悬浮跳动效果 */
+  opacity: 0.8 !important;                  /* 鼠标悬停时轻微淡出 */
+}
+
+/* 3. 统一大标题字号与粗细，模仿头条效果 */
+.post-entry .entry-header h2 {
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 12px !important;
+  letter-spacing: -0.01em;
+}
+
+/* 4. 调整摘要的正文字号和透明度 */
+.post-entry .entry-content {
+  font-size: 15.5px !important;
+  line-height: 1.6 !important;
+  color: var(--text-normal) !important;
+  opacity: 0.85;                            /* 稍微降低摘要亮度，突出标题 */
+}
+
+/* 5. 调整底部元数据（日期、字数）样式 */
+.post-entry .entry-footer {
+  font-size: 13px !important;
+  margin-top: 12px !important;
+}
+
+/* 移除列表最后一项的底部下划线 */
+.post-entry:last-of-type {
+  border-bottom: none !important;
+}

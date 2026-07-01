@@ -1,0 +1,74 @@
+baseURL: https://example.org/
+languageCode: zh-cn
+title: "我的 Obsidian 知识库"
+theme: PaperMod
+
+# 显式设置首页及列表页每页展示的笔记卡片数量
+paginate: 10
+
+# 配置输出格式以支持 PaperMod 的搜索功能
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # 搜索功能需要 JSON 输出
+
+# 顶层菜单配置
+menu:
+  main:
+    - name: "🔍 搜索"
+      url: "/search/"
+      weight: 10
+    - name: "📅 归档"
+      url: "/archives/"
+      weight: 20
+    - name: "🗂 分类"
+      url: "/categories/"
+      weight: 30
+    - name: "🏷 标签"
+      url: "/tags/"
+      weight: 40
+    - name: "🙋 关于"
+      url: "/about/"
+      weight: 50
+
+params:
+  env: production
+  title: "我的 Obsidian 知识库"
+  description: "从 Obsidian 自动同步构建的个人知识库"
+  author: "Me"
+  
+  # 开启数学公式渲染支持 (KaTeX)
+  math: true
+  
+  # 界面样式
+  defaultTheme: auto
+  disableThemeToggle: false
+  showShareButtons: false
+  showCodeCopyButtons: true
+  
+  # 统一卡片排版细节
+  disableSpecial1stPost: true # 禁用第一篇特殊大卡片
+  ShowReadingTime: true       # 卡片上显示预计阅读时间
+  ShowWordCount: true         # 卡片上显示笔记字数
+  summaryLength: 60           # 自动截取的摘要长度
+  
+  # 目录 (TOC) 配置
+  ShowToc: true
+  TocOpen: false # 默认折叠目录，点击展开
+
+# 开启 Goldmark 渲染器扩展以支持 LaTeX 公式透传
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - - '$$'
+              - '$$'
+          inline:
+            - - '$'
+              - '$'

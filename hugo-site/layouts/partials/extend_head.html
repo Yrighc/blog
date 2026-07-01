@@ -1,0 +1,30 @@
+{{- if or .Params.math .Site.Params.math -}}
+<!-- 100% 离线本地化托管的 KaTeX 数学公式渲染引擎 -->
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/contrib/auto-render.min.js"></script>
+
+<!-- 安全地在本地 DOMContentLoaded 后执行数学公式渲染 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        try {
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ],
+                    throwOnError : false
+                });
+                console.log('✓ KaTeX 本地化数学公式渲染成功！');
+            } else {
+                console.error('KaTeX auto-render.js 成功读取但 renderMathInElement 未定义。');
+            }
+        } catch (err) {
+            console.error('KaTeX 本地渲染异常：', err);
+        }
+    });
+</script>
+{{- end -}}
